@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { SITE } from "../config";
+
+const all = await getCollection("projects", ({ data }) => data.status === "published");
+const featured = all.sort((a, b) => a.data.order - b.data.order).slice(0, 3);
+---
+
+<BaseLayout>
+  <div class="wrap">
+    <div class="hero">
+      <p class="eyebrow">{SITE.name} · {SITE.yearsExperience} years in business analysis</p>
+      <h1>{SITE.title}</h1>
+      <p class="lead">{SITE.tagline}.</p>
+      <p class="lead">
+        I find where AI creates real value, write the requirements that make it buildable, prototype to
+        test it quickly, and plan adoption so it sticks.
+      </p>
+      <div class="actions">
+        <a class="button" href="/projects">See my projects</a>
+        <a class="button ghost" href="/contact">Get in touch</a>
+      </div>
+    </div>
+
+    <section>
+      <h2>What I measure every project by</h2>
+      <div class="grid three">
+        <div class="card">
+          <h3>Revenue</h3>
+          <p class="muted">AI opportunities that improve conversion, retention, pricing or speed to market.</p>
+        </div>
+        <div class="card">
+          <h3>Cost</h3>
+          <p class="muted">Removing manual effort, rework and avoidable errors from workflows that already exist.</p>
+        </div>
+        <div class="card">
+          <h3>Efficiency</h3>
+          <p class="muted">Getting more from the systems an organisation already runs before recommending anything new.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Featured projects</h2>
+      <div class="grid two">
+        {featured.map((p) => (
+          <a class="card" href={`/projects/${p.id}`}>
+            <span class="tag domain">{p.data.domain}</span>
+            <h3>{p.data.title}</h3>
+            <p class="muted">{p.data.summary}</p>
+            <div>{p.data.skills.slice(0, 4).map((s) => <span class="tag">{s}</span>)}</div>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:20px"><a href="/projects">All projects &rarr;</a></p>
+    </section>
+
+    <section>
+      <h2>Domains I work in</h2>
+      <p class="lead" style="font-size:1.05rem">
+        Maritime, oil &amp; gas and payments, with one method that carries across all three.
+        <a href="/method">See how I work &rarr;</a>
+      </p>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("insights")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" });
+---
+
+<BaseLayout title="Insights" description="Notes on AI business analysis: use-case selection, requirements, evaluation and adoption.">
+  <div class="wrap">
+    <div class="hero" style="padding-bottom: 8px">
+      <p class="eyebrow">Insights</p>
+      <h1>Notes and analysis</h1>
+      <p class="lead">Short, practical write-ups on choosing, specifying and adopting AI solutions.</p>
+    </div>
+
+    <div class="grid two">
+      {posts.map((p) => (
+        <a class="card" href={`/insights/${p.id}`}>
+          <p class="muted" style="margin-bottom:8px">{fmt(p.data.date)}</p>
+          <h3 style="margin-top:0">{p.data.title}</h3>
+          <p class="muted">{p.data.summary}</p>
+          <div>{p.data.tags.map((t) => <span class="tag">{t}</span>)}</div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

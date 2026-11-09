@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../config";
+---
+
+<BaseLayout title="Contact" description="Get in touch about AI business analysis work.">
+  <div class="wrap narrow">
+    <div class="hero" style="padding-bottom: 8px">
+      <p class="eyebrow">Contact</p>
+      <h1>Let's talk</h1>
+      <p class="lead">
+        If you have a business problem you suspect AI could help with, or a role where this experience fits, I'd like to hear about it.
+      </p>
+    </div>
+
+    <div class="grid two">
+      <a class="card" href={`mailto:${SITE.email}`}>
+        <h3>Email</h3>
+        <p class="muted">{SITE.email}</p>
+      </a>
+      <a class="card" href={SITE.linkedin}>
+        <h3>LinkedIn</h3>
+        <p class="muted">Connect or send a message</p>
+      </a>
+      {SITE.calendar && (
+        <a class="card" href={SITE.calendar}>
+          <h3>Book a call</h3>
+          <p class="muted">Pick a time that suits you</p>
+        </a>
+      )}
+      {SITE.github && (
+        <a class="card" href={SITE.github}>
+          <h3>GitHub</h3>
+          <p class="muted">Code and prototypes</p>
+        </a>
+      )}
+    </div>
+  </div>
+</BaseLayout>

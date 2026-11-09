@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../config";
+---
+
+<BaseLayout title="About" description="AI Business Analyst with 12+ years of experience across enterprise systems and asset-heavy operations.">
+  <div class="wrap narrow">
+    <div class="hero" style="padding-bottom: 8px">
+      <p class="eyebrow">About</p>
+      <h1>{SITE.title}</h1>
+    </div>
+
+    <div class="prose">
+      <p>
+        I'm an AI Business Analyst with {SITE.yearsExperience} years of experience turning business problems into
+        solutions that people actually use. I connect business teams and technical teams, and I measure every
+        project by what it delivers: <strong>revenue growth, cost reduction, and efficiency gains in the systems
+        and processes organisations already run.</strong>
+      </p>
+      <p>
+        My background is in enterprise systems and asset-heavy operations, including a long career as a Senior
+        Business Analyst in the maritime industry, working with maintenance and classification platforms
+        (including IBM Maximo), competitive intelligence, and content strategy.
+      </p>
+      <p>
+        Today I help organisations find where AI creates real value, write the requirements that make it
+        buildable, prototype to test it fast, and plan the adoption so it sticks.
+      </p>
+
+      <h2>How I think about outcomes</h2>
+      <ul>
+        <li><strong>Revenue:</strong> identify AI opportunities that improve conversion, retention, pricing or speed to market.</li>
+        <li><strong>Cost:</strong> remove manual effort, rework and avoidable errors from existing workflows.</li>
+        <li><strong>Efficiency:</strong> get more from current systems before recommending anything new.</li>
+      </ul>
+
+      <p>
+        I work across <strong>maritime, oil &amp; gas and payments</strong>, and I'm deepening my technical skills in
+        SQL and Python through the projects on this site.
+      </p>
+
+      <h2>Skills</h2>
+      <div>
+        {["AI use-case discovery", "Requirements and user stories", "Process modelling (BPMN, UML)", "Stakeholder management", "SQL", "Excel / Power BI", "Prompt design", "RAG and LLM workflows", "Evaluation and responsible AI", "IBM Maximo", "Competitive intelligence", "Content strategy"].map((s) => <span class="tag">{s}</span>)}
+      </div>
+      <p style="margin-top:12px"><strong>Currently learning:</strong> Python for data analysis (pandas, charts, Streamlit demos).</p>
+
+      <div class="actions">
+        <a class="button" href="/contact">Get in touch</a>
+        <a class="button ghost" href="/projects">See my work</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

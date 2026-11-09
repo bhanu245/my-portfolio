@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects", ({ data }) => data.status === "published")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const domains = [...new Set(projects.map((p) => p.data.domain))];
+---
+
+<BaseLayout title="Projects" description="Case studies in AI business analysis across maritime, oil & gas and payments.">
+  <div class="wrap">
+    <div class="hero" style="padding-bottom: 8px">
+      <p class="eyebrow">Projects</p>
+      <h1>Case studies</h1>
+      <p class="lead">
+        Each project shows the business problem, my role, the method, the artifacts and the result.
+        Self-initiated projects use public or synthetic data and are labelled as such.
+      </p>
+    </div>
+
+    <div class="filters" id="filters">
+      <button class="active" data-domain="all">All</button>
+      {domains.map((d) => <button data-domain={d}>{d}</button>)}
+    </div>
+
+    <div class="grid two" id="project-grid">
+      {projects.map((p) => (
+        <a class="card" href={`/projects/${p.id}`} data-domain={p.data.domain}>
+          <span class="tag domain">{p.data.domain}</span>
+          <h3>{p.data.title}</h3>
+          <p class="muted">{p.data.summary}</p>
+          <div>{p.data.skills.map((s) => <span class="tag">{s}</span>)}</div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>("#filters button");
+    const cards = document.querySelectorAll<HTMLElement>("#project-grid .card");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const d = btn.dataset.domain;
+        cards.forEach((c) => {
+          c.style.display = d === "all" || c.dataset.domain === d ? "" : "none";
+        });
+      });
+    });
+  </script>
+</BaseLayout>
