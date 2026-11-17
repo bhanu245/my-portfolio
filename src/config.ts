@@ -3,8 +3,8 @@
 // ============================================================
 export const SITE = {
   name: "Bhanu Prakash Reddy Beri",
-  title: "AI Business Analyst",
-  tagline: "Turning business problems into AI solutions teams actually adopt",
+  title: "AI Product Owner",
+  tagline: "Turning operational problems in asset-intensive industries into AI products teams actually adopt",
   yearsExperience: "12+",
   // Replace these with your real details:
   email: "bhanuprakash245@gmail.com",
