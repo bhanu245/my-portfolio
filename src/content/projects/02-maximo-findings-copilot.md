@@ -74,8 +74,13 @@ The copilot sits beside Maximo. It reads assets, locations and failure lists thr
 
 ## Result
 
-[Add the accuracy test result here once you have run it and checked the expected labels, for example: "Asset match X%, problem code Y% on 20 expert-labelled findings; Z of the misses were flagged Low or Medium confidence."]
+- A working prototype covering the full loop: finding in, validated draft, planner decision, audit trail, risk-ranked backlog.
+- Guardrails built in: any asset or failure code the AI proposes that is not in the vessel's Maximo data is rejected before a planner sees it.
+- An evaluation harness of 20 expert-labelled findings, from clear cases to deliberately vague ones, scored field by field.
+- **Accuracy:** [asset match X%, problem code Y%, severity Z%, priority W% on 20 findings; N of the misses were flagged Medium or Low confidence.]
 
 ## What I'd do differently
 
-[Add two or three honest lines after testing, for example which findings the AI found hardest and what that means for a real pilot.]
+- **Get planners to label the test set, not just me.** I wrote the expert answers and designed the prompt, so the test may favour how I think. In a real pilot, two or three planners should label independently, and their disagreement rate becomes the benchmark the AI has to match.
+- **Measure the baseline first.** The ROI case assumes how long manual translation takes today. Before a pilot I would time planners on real findings, so the time saving is measured rather than estimated.
+- **Test with messier, real findings sooner.** Synthetic findings are cleaner than what inspectors write on board: abbreviations, mixed languages, several defects in one note. The vague test case is a start, but real anonymised findings would show the true error rate faster than more synthetic ones.
