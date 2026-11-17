@@ -8,7 +8,7 @@ export const SITE = {
   yearsExperience: "12+",
   // Replace these with your real details:
   email: "bhanuprakash245@gmail.com",
-  linkedin: "www.linkedin.com/in/bhanu-prakash-reddy-6906ab1b3",
+  linkedin: "https://www.linkedin.com/in/bhanu-prakash-reddy-6906ab1b3",
   calendar: "", // optional: paste a Cal.com or Calendly link, or leave empty
   github: "", // optional: your GitHub profile link, or leave empty
 };
