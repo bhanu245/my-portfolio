@@ -77,7 +77,7 @@ The copilot sits beside Maximo. It reads assets, locations and failure lists thr
 - A working prototype covering the full loop: finding in, validated draft, planner decision, audit trail, risk-ranked backlog.
 - Guardrails built in: any asset or failure code the AI proposes that is not in the vessel's Maximo data is rejected before a planner sees it.
 - An evaluation harness of 20 expert-labelled findings, from clear cases to deliberately vague ones, scored field by field.
-- **Accuracy:** [asset match X%, problem code Y%, severity Z%, priority W% on 20 findings; N of the misses were flagged Medium or Low confidence.]
+- Integration-ready output: every approved draft is shown as the exact payload Maximo's work order API (MXAPIWODETAIL) would receive, so the path from prototype to a real Maximo instance needs no change to Maximo's core.
 
 ## What I'd do differently
 
